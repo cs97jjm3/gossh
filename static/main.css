@@ -1,0 +1,30 @@
+body{background-color:#000000;padding:0px;width:100%}
+
+.gridster{width:300px;float:left;margin-left:20px;
+	color:#ecf0f1;font-family: 'Montserrat';
+	font-weight:700;font-size:16px;
+}
+
+.gridster div.server{width:300px;font-weight:400;}
+
+ul, ol {list-style: outside none none;}
+
+.gridster li{line-height:100%;}
+.gridster li.uptime{background-color:#27ae60;}
+.gridster li.memory{background-color:#c0392b;}
+.gridster li.cpu{background-color:#e67e22;}
+.gridster li.network{background-color:#8e44ad;}
+.gridster li.disk{background-color:#3498db;}
+
+.gridster .gs-w {
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.gridster span.t{
+ 	position:absolute;
+	top:45%;left:0px;
+	text-align:center;
+	width:100%;
+}

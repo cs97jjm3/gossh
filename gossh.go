@@ -38,7 +38,7 @@ func NewServer(pollInterval time.Duration) *Server {
 }
 
 //Add a site to be monitored
-func (s *Server) AddMonitor(servername, url, username, password string) (err error) {
+func (s *Server) AddSite(servername, url, username, password string) (err error) {
 	s.sites[servername] = &site{Server: servername, Url: url, Username: username, Password: password, Sleep: s.pollInterval}
 	return s.sites[servername].Configure()
 }

@@ -31,4 +31,4 @@ password=password
 ~~~
 You can have as many [yourserver] sections as you require, although each should have a unique name, requiring url, username and password.
 
-Launch the executable and you'll have a goosh webserver running on `localhost:4000`
+Launch the executable and you'll have a gossh webserver running on `localhost:4000`

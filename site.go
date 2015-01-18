@@ -1,7 +1,7 @@
 //Sites can be considered the SSH end-points e.g.
 //the servers you wish to be monitoring
 
-package gossh
+package main
 
 import (
 	"golang.org/x/crypto/ssh"
@@ -17,7 +17,7 @@ type site struct {
 	Sleep    time.Duration
 	config   *ssh.ClientConfig
 	client   *ssh.Client
-	commands []command
+	Commands []command
 }
 
 func (s *site) Configure() (err error) {
@@ -27,13 +27,6 @@ func (s *site) Configure() (err error) {
 			ssh.Password(s.Password),
 		},
 	}
-
-	//associate the commands
-	s.commands = make([]command, 0)
-	s.commands = append(s.commands, &memorycommand{})
-	s.commands = append(s.commands, &uptimecommand{})
-	s.commands = append(s.commands, &networkcommand{})
-	s.commands = append(s.commands, &diskcommand{})
 
 	//this needs moving
 	return s.connect()
@@ -53,12 +46,10 @@ func (s *site) Poll(out chan<- result) {
 	results := result{Server: s.Server, Values: make(map[string]string, 0)}
 
 	//collect the results
-	for i := range s.commands {
+	for i := range s.Commands {
 		session, _ := s.client.NewSession()
-		//execute the command passing the session
-		s.commands[i].Execute(session)
+		results.Values[s.Commands[i].Name] = s.Commands[i].Execute(session)
 		session.Close()
-		results.Values[s.commands[i].Name()] = s.commands[i].Results()
 	}
 
 	//pump the results out

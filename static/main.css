@@ -12,7 +12,7 @@ ul, ol {list-style: outside none none;}
 .gridster li{line-height:100%;}
 .gridster li.uptime{background-color:#27ae60;}
 .gridster li.memory{background-color:#c0392b;}
-.gridster li.cpu{background-color:#e67e22;}
+.gridster li.load{background-color:#e67e22;}
 .gridster li.network{background-color:#8e44ad;}
 .gridster li.disk{background-color:#3498db;}
 

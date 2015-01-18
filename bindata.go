@@ -1,16 +1,16 @@
-package gossh
+package main
 
 import (
 	"bytes"
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
+	"strings"
 	"os"
+	"time"
+	"io/ioutil"
 	"path"
 	"path/filepath"
-	"strings"
-	"time"
 )
 
 func bindata_read(data []byte, name string) ([]byte, error) {
@@ -36,9 +36,9 @@ type asset struct {
 }
 
 type bindata_file_info struct {
-	name    string
-	size    int64
-	mode    os.FileMode
+	name string
+	size int64
+	mode os.FileMode
 	modTime time.Time
 }
 
@@ -77,7 +77,7 @@ func static_jquery_2_1_3_min_js() (*asset, error) {
 	}
 
 	info := bindata_file_info{name: "static/jquery-2.1.3.min.js", size: 84324, mode: os.FileMode(438), modTime: time.Unix(1421348126, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -97,7 +97,7 @@ func static_jquery_gridster_min_css() (*asset, error) {
 	}
 
 	info := bindata_file_info{name: "static/jquery.gridster.min.css", size: 3031, mode: os.FileMode(438), modTime: time.Unix(1421348824, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -117,11 +117,11 @@ func static_jquery_gridster_min_js() (*asset, error) {
 	}
 
 	info := bindata_file_info{name: "static/jquery.gridster.min.js", size: 44236, mode: os.FileMode(438), modTime: time.Unix(1421348069, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
-var _static_main_css = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\x6c\x92\x71\x6e\xa3\x3c\x10\xc5\xff\x4e\xa4\xdc\xc1\x52\x55\xf5\xfb\xa4\x82\x1c\x42\x93\xd6\x9c\x61\x0f\x61\xf0\x40\xac\x1a\x8f\x65\x0f\x25\xd9\x68\xef\xbe\x36\x41\x6a\x37\xe0\x44\x08\x6b\x7e\xf3\xe6\xe9\x31\x35\xaa\xeb\xad\x96\xcd\x67\xe7\x71\xb0\x2a\x6b\xd0\xa0\x17\x4f\x7c\x3a\x95\x93\x4a\x69\xdb\x09\xee\x2e\xd5\xa8\x15\x9d\xc5\x9e\xf3\xe7\x3f\xbb\xed\x6e\x9b\x77\x5e\xab\x40\xe0\x6f\xf7\xc2\x81\x27\xa8\x35\x28\x49\x18\x68\xa9\xea\xa5\xef\xb4\xcd\xd2\xbb\x28\x52\x6d\xb7\xdd\xcc\xea\xd0\xb4\xbc\xdd\x57\x2d\x5a\xca\x5a\xd9\x6b\x73\x15\xec\xe5\x57\xbc\x05\xf0\x5e\xd2\x4b\x42\xa7\xe2\x08\xba\x3b\x93\x38\x45\x2b\xd3\x3d\xe8\xdf\x20\xf6\xc7\x49\xec\x5f\x17\x4c\xe9\xaf\x3c\xb6\x7f\x3d\x1a\xfa\x21\x53\x46\x99\xa9\x6b\x30\xaf\x0c\x0d\xbb\x19\x1d\xa2\x26\x5d\x0d\x08\x86\x03\x05\xad\x80\x59\xb4\xf7\x47\xf5\x30\xc0\xe8\xc8\x5b\xc8\xce\x77\xb1\x14\x44\x42\x7e\x02\xf9\xe0\x48\xf7\xb0\x92\x67\x71\x92\x70\xe4\x0b\xbe\x87\x1e\xfd\x5a\xfe\x0d\x3f\x7c\x14\xf5\x82\x6f\xdc\xb0\x02\xc3\xf1\x04\x45\xb1\x80\x2d\xd0\x88\xfe\x73\xa5\xe1\x1d\xca\x52\xaa\x45\x83\xd2\x61\x8d\x3e\x94\x1f\xef\xaa\x7e\x8c\x23\xef\x42\x36\xb2\xdb\x6e\xcb\xe2\xf9\x6e\x12\xf7\x00\x3d\x38\x90\xc4\x42\xe3\xd1\x18\xc6\xe3\xef\xa9\x6d\xdb\x6a\xa6\xf1\x92\x85\xb3\x54\x38\x8a\xa9\xf4\xe6\x2e\xcc\x77\xb5\xfc\x8f\xbf\xb2\xf9\x9f\x1f\xfe\x9f\xe1\x66\xf0\x21\xba\x60\x0e\xb5\x8d\x73\x97\x1f\x3e\x38\x69\x73\x4a\x46\x36\x0e\x83\x26\x8d\x56\xc8\x3a\xa0\x19\x08\xd2\x22\x11\x3a\x51\xbe\x3d\x57\xd3\x22\xce\x7b\x48\x70\xa1\x4c\x1a\xdd\x59\xd1\xc0\x2c\xbb\xf9\x5e\xf0\x34\xe4\x6f\x00\x00\x00\xff\xff\x29\x06\x7d\xd4\x19\x03\x00\x00")
+var _static_main_css = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\x6c\x92\x71\x6e\xa3\x3c\x10\xc5\xff\x4e\xa4\xdc\xc1\x52\x55\xf5\xfb\xa4\x82\x1c\x42\x93\xd6\x9c\x61\x0f\x61\xf0\x40\xac\x1a\x8f\x65\x0f\x25\xd9\x68\xef\xbe\x36\x41\x6a\x37\xe0\x44\x08\x6b\x7e\xf3\xe6\xe9\x31\x35\xaa\xeb\xad\x96\xcd\x67\xe7\x71\xb0\x2a\x6b\xd0\xa0\x17\x4f\x7c\x3a\x95\x93\x4a\x69\xdb\x09\xee\x2e\xd5\xa8\x15\x9d\xc5\x9e\xf3\xe7\x3f\xbb\xed\x6e\x9b\x77\x5e\xab\x40\xe0\x6f\xf7\xc2\x81\x27\xa8\x35\x28\x49\x18\x68\xa9\xea\xa5\xef\xb4\xcd\xd2\xbb\x28\x52\x6d\xb7\xdd\xcc\xea\xd0\xb4\xbc\xdd\x57\x2d\x5a\xca\x5a\xd9\x6b\x73\x15\xec\xe5\x57\xbc\x05\xf0\x5e\xd2\x4b\x42\xa7\xe2\x08\xba\x3b\x93\x38\x45\x2b\xd3\x3d\xe8\xdf\x20\xf6\xc7\x49\xec\x5f\x17\x4c\xe9\xaf\x3c\xb6\x7f\x3d\x1a\xfa\x21\x53\x46\x99\xa9\x6b\x30\xaf\x0c\x0d\xbb\x19\x1d\xa2\x26\x5d\x0d\x08\x86\x03\x05\xad\x80\x59\xb4\xf7\x47\xf5\x30\xc0\xe8\xc8\x5b\xc8\xce\x77\xb1\x14\x44\x42\x7e\x02\xf9\xe0\x48\xf7\xb0\x92\x67\x71\x92\x70\xe4\x0b\xbe\x87\x1e\xfd\x5a\xfe\x0d\x3f\x7c\x14\xf5\x82\x8f\xe9\xaa\x15\x1a\x8e\x27\x28\x8a\x05\x6d\x81\x46\xf4\x9f\x2b\x0d\xef\x50\x96\x52\x2d\x1a\x94\x0e\x6b\xf4\xa1\xfc\x78\x57\xf5\x63\x1e\x79\x17\xb2\x91\xdd\x76\x5b\x16\xcf\x77\x93\xb8\x27\xe8\xc1\x81\x24\x16\x1a\x8f\xc6\x30\x1e\x7f\x4f\x6d\xdb\x56\x33\x8d\x97\x2c\x9c\xa5\xc2\x51\x4c\xa5\x37\x77\x61\xbe\xab\xe5\x7f\xfc\x95\xcd\xff\xfc\xf0\xff\x0c\x37\x83\x0f\xd1\x05\x73\xa8\x6d\x9c\xbb\xfc\xf2\xc1\x49\x9b\x53\x32\xb2\x71\x18\x34\x69\xb4\x42\xd6\x01\xcd\x40\x90\x36\x89\xd0\x89\xf2\xed\xb9\x9a\x36\x71\x5e\x44\x82\x0b\x65\xd2\xe8\xce\x8a\x06\x66\xd9\xcd\xf7\x86\xa7\x21\x7f\x03\x00\x00\xff\xff\x75\xec\x9c\xa5\x1a\x03\x00\x00")
 
 func static_main_css_bytes() ([]byte, error) {
 	return bindata_read(
@@ -136,8 +136,8 @@ func static_main_css() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindata_file_info{name: "static/main.css", size: 793, mode: os.FileMode(438), modTime: time.Unix(1421510793, 0)}
-	a := &asset{bytes: bytes, info: info}
+	info := bindata_file_info{name: "static/main.css", size: 794, mode: os.FileMode(438), modTime: time.Unix(1421613856, 0)}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -157,7 +157,7 @@ func static_main_html() (*asset, error) {
 	}
 
 	info := bindata_file_info{name: "static/main.html", size: 818, mode: os.FileMode(438), modTime: time.Unix(1421511785, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -177,7 +177,7 @@ func static_main_js() (*asset, error) {
 	}
 
 	info := bindata_file_info{name: "static/main.js", size: 1930, mode: os.FileMode(438), modTime: time.Unix(1421511489, 0)}
-	a := &asset{bytes: bytes, info: info}
+	a := &asset{bytes: bytes, info:  info}
 	return a, nil
 }
 
@@ -222,12 +222,12 @@ func AssetNames() []string {
 
 // _bindata is a table, holding each asset generator, mapped to its name.
 var _bindata = map[string]func() (*asset, error){
-	"static/jquery-2.1.3.min.js":     static_jquery_2_1_3_min_js,
+	"static/jquery-2.1.3.min.js": static_jquery_2_1_3_min_js,
 	"static/jquery.gridster.min.css": static_jquery_gridster_min_css,
-	"static/jquery.gridster.min.js":  static_jquery_gridster_min_js,
-	"static/main.css":                static_main_css,
-	"static/main.html":               static_main_html,
-	"static/main.js":                 static_main_js,
+	"static/jquery.gridster.min.js": static_jquery_gridster_min_js,
+	"static/main.css": static_main_css,
+	"static/main.html": static_main_html,
+	"static/main.js": static_main_js,
 }
 
 // AssetDir returns the file names below a certain
@@ -266,61 +266,67 @@ func AssetDir(name string) ([]string, error) {
 }
 
 type _bintree_t struct {
-	Func     func() (*asset, error)
+	Func func() (*asset, error)
 	Children map[string]*_bintree_t
 }
-
 var _bintree = &_bintree_t{nil, map[string]*_bintree_t{
-	"static/jquery-2.1.3.min.js":     &_bintree_t{static_jquery_2_1_3_min_js, map[string]*_bintree_t{}},
-	"static/jquery.gridster.min.css": &_bintree_t{static_jquery_gridster_min_css, map[string]*_bintree_t{}},
-	"static/jquery.gridster.min.js":  &_bintree_t{static_jquery_gridster_min_js, map[string]*_bintree_t{}},
-	"static/main.css":                &_bintree_t{static_main_css, map[string]*_bintree_t{}},
-	"static/main.html":               &_bintree_t{static_main_html, map[string]*_bintree_t{}},
-	"static/main.js":                 &_bintree_t{static_main_js, map[string]*_bintree_t{}},
+	"static/jquery-2.1.3.min.js": &_bintree_t{static_jquery_2_1_3_min_js, map[string]*_bintree_t{
+	}},
+	"static/jquery.gridster.min.css": &_bintree_t{static_jquery_gridster_min_css, map[string]*_bintree_t{
+	}},
+	"static/jquery.gridster.min.js": &_bintree_t{static_jquery_gridster_min_js, map[string]*_bintree_t{
+	}},
+	"static/main.css": &_bintree_t{static_main_css, map[string]*_bintree_t{
+	}},
+	"static/main.html": &_bintree_t{static_main_html, map[string]*_bintree_t{
+	}},
+	"static/main.js": &_bintree_t{static_main_js, map[string]*_bintree_t{
+	}},
 }}
 
 // Restore an asset under the given directory
 func RestoreAsset(dir, name string) error {
-	data, err := Asset(name)
-	if err != nil {
-		return err
-	}
-	info, err := AssetInfo(name)
-	if err != nil {
-		return err
-	}
-	err = os.MkdirAll(_filePath(dir, path.Dir(name)), os.FileMode(0755))
-	if err != nil {
-		return err
-	}
-	err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
-	if err != nil {
-		return err
-	}
-	err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
-	if err != nil {
-		return err
-	}
-	return nil
+        data, err := Asset(name)
+        if err != nil {
+                return err
+        }
+        info, err := AssetInfo(name)
+        if err != nil {
+                return err
+        }
+        err = os.MkdirAll(_filePath(dir, path.Dir(name)), os.FileMode(0755))
+        if err != nil {
+                return err
+        }
+        err = ioutil.WriteFile(_filePath(dir, name), data, info.Mode())
+        if err != nil {
+                return err
+        }
+        err = os.Chtimes(_filePath(dir, name), info.ModTime(), info.ModTime())
+        if err != nil {
+                return err
+        }
+        return nil
 }
 
 // Restore assets under the given directory recursively
 func RestoreAssets(dir, name string) error {
-	children, err := AssetDir(name)
-	if err != nil { // File
-		return RestoreAsset(dir, name)
-	} else { // Dir
-		for _, child := range children {
-			err = RestoreAssets(dir, path.Join(name, child))
-			if err != nil {
-				return err
-			}
-		}
-	}
-	return nil
+        children, err := AssetDir(name)
+        if err != nil { // File
+                return RestoreAsset(dir, name)
+        } else { // Dir
+                for _, child := range children {
+                        err = RestoreAssets(dir, path.Join(name, child))
+                        if err != nil {
+                                return err
+                        }
+                }
+        }
+        return nil
 }
 
 func _filePath(dir, name string) string {
-	cannonicalName := strings.Replace(name, "\\", "/", -1)
-	return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
+        cannonicalName := strings.Replace(name, "\\", "/", -1)
+        return filepath.Join(append([]string{dir}, strings.Split(cannonicalName, "/")...)...)
 }
+

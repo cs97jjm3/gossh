@@ -1,4 +1,4 @@
-package gossh
+package main
 
 import (
 	"encoding/json"

@@ -1,1 +1,1 @@
-package gossh
+package main
